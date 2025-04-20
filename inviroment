@@ -1,0 +1,6 @@
+python 3.12.3
+wsl2 가상환경, ubuntu 24.04 lts 운영체제
+numpy-2.2.5 
+pandas-2.2.3
+pytz-2025.2
+tzdata-2025.2
