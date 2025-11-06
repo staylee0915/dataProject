@@ -11,6 +11,10 @@ print(df.head())
 df = df.dropna(subset=['views'])
 #print(df.shape) # 행이 제거 되었음을 확인, subset[], axis = 0은 결측값이 있는 행을 제거.
 df['f3'] = df['f3'].fillna(0)
+#위 구문은 아래와 같이도 사용가능
+#import numpy as np
+#df['f3'] = df['f3'].replace(np.nan,0)
+
 df['f3'] = df['f3'].replace({'silver' : 1, 'gold' : 2, 'vip' : 3}).astype(int)
 #print(df['f3'])
 print(df['f3'].sum())
