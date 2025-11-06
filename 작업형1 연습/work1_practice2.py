@@ -12,10 +12,10 @@ df = pd.read_csv('members.csv')
 # f3 최빈값
 
 #print(df.shape)
-df = df.dropna(subset=['f1'])
+df = df.dropna(subset=['f1']) #f1의 결측값 삭제.
 #print(df.shape)
 
-#print(df['f3'].mode()[0])
+#print(df['f3'].mode()[0]) //최빈값 확인.
 df['f3'] = df['f3'].fillna(df['f3'].mode()[0])
 #print(df.head())
 
