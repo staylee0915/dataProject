@@ -41,7 +41,7 @@ df = pd.concat([train,test])
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 for col in cols :
-    df[col] = le.fit_transform(df[col])
+    df[col] = le.fit_transform(df[col]) // 컬럼은 한번에 하나씩 밖에 못바꾸므로 for문을 사용
 
 (train test 셋 제작)
 train = df.iloc[:len(train)].copy()
@@ -53,7 +53,7 @@ train과 test의 컬럼이 동일할 경우
 
 df = df.drop('item', axis = 1)
 (train test셋 제작)
-train = pd.get_dummies(train)
+train = pd.get_dummies(train) // 원핫 인코딩은 pandas에 위치.
 test = pd.get_dummies(test)
 
 기본 (카테고리 같음)
@@ -79,7 +79,7 @@ from sklearn.emsemble import RandomForestRegressor
 // 분류문제일 경우 import RandomForestClassifier
 
 #학습
-rf = RandomForestRegressor()
+rf = RandomForestRegressor(random_state = 2022)
  - 훈련
 rf.fit(xt,yt)
 y_pred = rf.predict(xv)
@@ -102,4 +102,15 @@ mean_squred_error
 mean_Absolute_error
 r2_score
 
+- roc-auc
+model.predict_proba(xv)
+roc_auc_score(yv,pred[:,1])
+
+sumbit = pd.DataFrame({
+    'CLIENTNUM':test_id,
+    'Attrition_Flag':pred[:,1]
+})
+submit.csv('0000.csv',index=False)
+
+pd.read_csv('0000.csv') // 확인제로 제출버튼.
 '''

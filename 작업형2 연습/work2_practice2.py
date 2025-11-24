@@ -81,8 +81,20 @@ print(accuracy_score(yv,pred),precision_score(yv,pred),recall_score(yv,pred),f1_
 #base line
 #0.9648365206662554 0.9399141630901288 0.8358778625954199 0.8848484848484849
 
+from sklearn.metrics import roc_auc_score
 #예측값 평가 ruc auc
 pred = rf.predict_proba(xv)
-print(roc_auc_score(yv,pred[:,1]))
+print(pred)
+
 #baseline
 #0.9904032489088856
+print(roc_auc_score(yv,pred[:,1]))
+
+# 예측 및 제출
+pred = rf.predict_proba(test)
+submit = pd.DataFrame({
+    'CLIENTNUM' : test_id,
+    'Attrition_Flag' : pred[:,1]
+})
+print(submit)
+submit.to_csv('9194.csv',index=False)
