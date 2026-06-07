@@ -183,3 +183,19 @@ print(f1_score(yv,pred))
 
 # 원핫 인코딩 결과
 # 0.8752
+#predict는 분류
+#predict proba는 확률
+pred = rf.predict_proba(test)
+
+submit = pd.DataFrame(
+    {
+        'CLIENTNUM':test_id,
+        'Attrition_Flag':pred[:,1]
+    }
+)
+
+print(submit)
+submit.to_csv('2026-2.csv', index = False)
+
+y_test = pd.read_csv('content/practice2/y_test.csv')
+print(roc_auc_score(y_test,pred[:,1]))

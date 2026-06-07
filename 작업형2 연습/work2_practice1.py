@@ -50,6 +50,7 @@ print(train.shape,test.shape)
 df = pd.concat([train,test])
 print(df.shape)
 
+#여기서는 합쳐서 하나만 transform
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 for col in cols :
